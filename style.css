@@ -1006,6 +1006,42 @@ body.logged-in.sidebar-closed #toggleSidebarBtn {
     transform: translateY(1px);
 }
 
+/* ================================
+   LIGHT MODE FIXES FOR SIDEBAR
+   ================================ */
+body.light-mode .sidebar {
+    background: #f5f7fa;        /* Light background */
+    color: #111;                /* Dark text */
+}
+
+/* Fix username & ID text */
+body.light-mode .sidebar .profile-name,
+body.light-mode .sidebar .profile-id {
+    color: #111 !important;     /* Force readable text */
+}
+
+/* Sidebar buttons */
+body.light-mode .sidebar .side-btn {
+    background: #e3e7ff;        /* Light button color */
+    color: #111 !important;
+    border: 1px solid #d0d4e6;
+}
+
+body.light-mode .sidebar .side-btn:hover {
+    background: #d7dcff;
+}
+
+/* Active sidebar button */
+body.light-mode .sidebar .side-btn.active {
+    background: #c6ccff;
+    color: #000;
+}
+
+/* Menu button in light mode */
+body.light-mode #toggleSidebarBtn {
+    background: linear-gradient(135deg, #5aaaff, #1f7bdd);
+    color: #fff;
+}
 
 
 
