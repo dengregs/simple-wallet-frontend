@@ -902,8 +902,20 @@ function showQuickTopup() {
 // -------------------------------------
 // Sidebar Toggle Button (add at bottom)
 // -------------------------------------
+// ==========================================
+//  SINGLE sidebar restore + toggle handler
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById("toggleSidebarBtn");
+    const token = localStorage.getItem("jwt");
+
+    // If logged in → sidebar system active
+    if (token) {
+        document.body.classList.add("logged-in");
+        // Do NOT touch sidebar-closed here (so user’s choice stays)
+    }
+
+    // Attach ONE click handler
     if (btn) {
         btn.addEventListener("click", () => {
             document.body.classList.toggle("sidebar-closed");
