@@ -911,4 +911,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("jwt");
+
+    // User is logged in → show sidebar normally
+    if (token) {
+        document.body.classList.add("logged-in");
+
+        // ⭐ Only set default state IF user never toggled sidebar
+        if (!localStorage.getItem("sidebarState")) {
+            localStorage.setItem("sidebarState", "open");
+        }
+
+        // ⭐ Apply saved sidebar state
+        if (localStorage.getItem("sidebarState") === "closed") {
+            document.body.classList.add("sidebar-closed");
+        } else {
+            document.body.classList.remove("sidebar-closed");
+        }
+    }
+
+    // ⭐ Ensure Menu Button Works
+    const btn = document.getElementById("toggleSidebarBtn");
+    if (btn) {
+        btn.addEventListener("click", () => {
+            document.body.classList.toggle("sidebar-closed");
+
+            // ⭐ Save the new state
+            if (document.body.classList.contains("sidebar-closed")) {
+                localStorage.setItem("sidebarState", "closed");
+            } else {
+                localStorage.setItem("sidebarState", "open");
+            }
+        });
+    }
+});
 
