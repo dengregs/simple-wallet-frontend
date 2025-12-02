@@ -1087,6 +1087,77 @@ body.light-mode #toggleSidebarBtn {
     }
 }
 
+/* -----------------------------
+  Mobile-friendly sidebar fixes
+  Append this at the end of style.css
+   ----------------------------- */
+
+/* Ensure the toggle button is always above everything */
+#toggleSidebarBtn {
+  position: fixed;
+  top: 12px;
+  left: 14px;
+  z-index: 4000; /* higher than sidebar */
+}
+
+/* Default closed state for large screens (keeps existing look) */
+body.logged-in.sidebar-closed .sidebar {
+  transform: translateX(-270px);
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* MOBILE: fully hide sidebar off-screen so no visible "strip" remains */
+@media (max-width: 900px) {
+  /* make sidebar use percentage transform so it hides completely on small screens */
+  .sidebar {
+    width: 280px;               /* keep a fixed width for the panel */
+    transform: translateX(-100%); /* default hidden */
+    left: 0;
+    top: 0;
+    height: 100vh;
+    position: fixed;
+    z-index: 1200;
+    transition: transform .28s ease, opacity .2s ease;
+  }
+
+  /* When visible on mobile, move it into view */
+  body.logged-in:not(.sidebar-closed) .sidebar {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* When closed on mobile, push the whole panel off-screen (no strip) */
+  body.logged-in.sidebar-closed .sidebar {
+    transform: translateX(-100%); /* full hide */
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Make sidebar full-height overlay effect optional */
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1100; /* below the button but above page content */
+    display: none;
+  }
+  body.logged-in:not(.sidebar-closed) .sidebar-overlay {
+    display: block;
+  }
+
+  /* Make toggle button a touch-friendly circle on tiny displays */
+  #toggleSidebarBtn {
+    left: 12px;
+    top: 12px;
+    min-width: 48px;
+    height: 44px;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+}
 
 
 

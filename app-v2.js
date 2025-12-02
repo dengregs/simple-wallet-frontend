@@ -922,4 +922,65 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// -----------------------------
+// Mobile sidebar helpers
+// Append this at the end of app-v2.js
+// -----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  // Ensure toggle button exists and attach handler (safe if already attached)
+  const btn = document.getElementById("toggleSidebarBtn");
+  if (btn) {
+    btn.addEventListener("click", () => {
+      // Toggle closed/open state
+      document.body.classList.toggle("sidebar-closed");
+
+      // If opening on mobile, add overlay; if closing, remove it
+      ensureOverlay();
+    });
+  }
+
+  // Create or remove overlay used to close sidebar on mobile
+  function ensureOverlay() {
+    // Only for small screens: width <= 900px (matches CSS)
+    const isMobile = window.innerWidth <= 900;
+    let overlay = document.querySelector(".sidebar-overlay");
+
+    if (!isMobile) {
+      // remove overlay for large screens
+      if (overlay) overlay.remove();
+      return;
+    }
+
+    // On mobile, show overlay when sidebar is open (body NOT having sidebar-closed)
+    const sidebarOpen = !document.body.classList.contains("sidebar-closed");
+
+    if (sidebarOpen) {
+      // create overlay if missing
+      if (!overlay) {
+        overlay = document.createElement("div");
+        overlay.className = "sidebar-overlay";
+        document.body.appendChild(overlay);
+
+        // close when tapping overlay
+        overlay.addEventListener("click", () => {
+          document.body.classList.add("sidebar-closed");
+          // remove overlay after closing
+          overlay.remove();
+        });
+      }
+    } else {
+      // closed -> remove overlay if present
+      if (overlay) overlay.remove();
+    }
+  }
+
+  // Keep overlay behavior responsive if user resizes orientation/window
+  window.addEventListener("resize", () => {
+    // if mobile and sidebar open, ensure overlay; otherwise remove
+    ensureOverlay();
+  });
+
+  // When app starts, make sure the overlay matches initial state
+  ensureOverlay();
+});
 
