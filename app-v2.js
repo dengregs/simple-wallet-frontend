@@ -910,17 +910,5 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-// ===============================
-// Restore sidebar after reload
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("toggleSidebarBtn");
-
-    if (btn) {
-        btn.addEventListener("click", () => {
-            document.body.classList.toggle("sidebar-closed");
-        });
-    }
-});
 
 
