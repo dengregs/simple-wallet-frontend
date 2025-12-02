@@ -756,7 +756,7 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
    ============================== */
 
 .sidebar {
-    padding-top: 110px; /* ⭐ Push content DOWN so nav buttons are not cut off */
+    padding-top: 140px; /* ⭐ Push content further DOWN so buttons are no longer cut off */
 
     display: none;
     opacity: 0;
@@ -770,6 +770,7 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
     width: 260px;        /* ⭐ Needed so -260px hide works perfectly */
     z-index: 999;
     transform: translateX(0);
+     overflow-y: auto;
 }
 
 /* Show sidebar when logged in */
@@ -844,6 +845,8 @@ body.logged-in.sidebar-closed #toggleSidebarBtn {
         0 3px 8px rgba(0, 0, 0, 0.35),
         inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
+
+
 
 
 
