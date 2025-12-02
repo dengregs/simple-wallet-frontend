@@ -672,9 +672,10 @@ async function initLedger() {
 
   try {
     const token = localStorage.getItem("jwt");
-    const accountId = localStorage.getItem("account_id");   // ⭐ ADDED
+    const accountId = localStorage.getItem("account_id");   // ⭐ keep this
 
-    const r = await fetch(`${API_BASE}/wallet/ledger?account_id=${accountId}`, {  // ⭐ MODIFIED
+    // ⭐ FIX: remove the query param but keep your same structure
+    const r = await fetch(`${API_BASE}/wallet/ledger`, {
       headers: { authorization: `Bearer ${token}` }
     });
 
@@ -709,6 +710,7 @@ async function initLedger() {
     showErrorPopup("Ledger network error");
   }
 }
+
 
 
 
