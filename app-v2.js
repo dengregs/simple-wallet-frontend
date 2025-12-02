@@ -911,4 +911,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+// all functions...
+
+// ===============================
+// Restore sidebar state on reload
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("jwt");
+
+    if (token) {
+        document.body.classList.add("logged-in");
+        // do NOT force sidebar open — let the user control it
+    }
+
+    const btn = document.getElementById("toggleSidebarBtn");
+    if (btn) {
+        btn.addEventListener("click", () => {
+            document.body.classList.toggle("sidebar-closed");
+        });
+    }
+});
 
