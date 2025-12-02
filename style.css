@@ -751,8 +751,12 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
    YOUR ORIGINAL CODE (unchanged)
 =============================== */
 /* Make sidebar lower so Menu button doesn't overlap profile */
+/* ==============================
+   SIDEBAR (modified only)
+   ============================== */
+
 .sidebar {
-    padding-top: 90px; /* ⭐ Push sidebar content BELOW Menu button */
+    padding-top: 110px; /* ⭐ Push content DOWN so nav buttons are not cut off */
 
     display: none;
     opacity: 0;
@@ -763,18 +767,36 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
     left: 0;
     top: 0;
     height: 100vh;
-    width: 260px;          /* ⭐ Recommended so transform -260px matches sidebar width */
+    width: 260px;        /* ⭐ Needed so -260px hide works perfectly */
     z-index: 999;
     transform: translateX(0);
 }
 
+/* Show sidebar when logged in */
+body.logged-in .sidebar {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
 
-/* Global Menu Button Position */
+/* Hide when "sidebar-closed" */
+body.logged-in.sidebar-closed .sidebar {
+    transform: translateX(-260px);
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/* ==========================================
+   ⭐ GLOBAL MENU BUTTON (modified only)
+   ========================================== */
+
 #toggleSidebarBtn {
     position: fixed;
     top: 18px;
     left: 18px;
-    z-index: 3000;   /* ⭐ ensures it's always above sidebar */
+    z-index: 3000;
 
     width: 150px;
     height: 45px;
@@ -799,14 +821,14 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
     transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
-/* Keep it visible when sidebar is closed */
+/* Keep the Menu button visible even when sidebar is closed */
 body.logged-in.sidebar-closed #toggleSidebarBtn {
     left: 18px;
     top: 18px;
-    z-index: 3000; /* ⭐ stays clickable */
+    z-index: 3000;
 }
 
-/* Hover */
+/* Hover effect */
 #toggleSidebarBtn:hover {
     transform: translateY(-3px);
     background: linear-gradient(135deg, #3fb4ff, #1170e6);
@@ -815,13 +837,14 @@ body.logged-in.sidebar-closed #toggleSidebarBtn {
         inset 0 1px 2px rgba(255, 255, 255, 0.25);
 }
 
-/* Active press */
+/* Active press effect */
 #toggleSidebarBtn:active {
     transform: translateY(1px);
     box-shadow:
         0 3px 8px rgba(0, 0, 0, 0.35),
         inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
+
 
 
 
