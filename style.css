@@ -756,6 +756,8 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
    ============================== */
 
 .sidebar {
+    padding-top: 110px; /* Push content down so it's not cut off */
+
     display: none;
     opacity: 0;
     visibility: hidden;
@@ -765,8 +767,14 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
     left: 0;
     top: 0;
     height: 100vh;
+    width: 260px;
     z-index: 999;
     transform: translateX(0);
+
+    /* ⭐ ADDED – fix cut-off issue */
+    display: flex;
+    flex-direction: column;     /* stack items vertically */
+    justify-content: flex-start;
 }
 
 body.logged-in .sidebar {
