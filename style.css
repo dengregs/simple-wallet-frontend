@@ -852,84 +852,80 @@ body.logged-in.sidebar-closed #toggleSidebarBtn {
    SIDEBAR — NEW MODERN DESIGN
 ============================================================ */
 
+/* ======================================
+   BASE SIDEBAR (DARK MODE DEFAULT)
+====================================== */
 .sidebar {
-    width: 260px;
-    height: 100vh;
     position: fixed;
-    top: 0;
     left: 0;
+    top: 0;
+    width: 270px;
+    height: 100vh;
+    padding-top: 120px;
+
+    background: linear-gradient(180deg, #071a2f, #0b243a);
+    border-right: 2px solid rgba(255, 255, 255, 0.05);
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: 18px;
 
-    background: linear-gradient(180deg, #06182d, #0b2339);
-    padding-top: 110px;
-    border-right: 2px solid rgba(255,255,255,0.06);
-
-    transform: translateX(-270px);
+    transform: translateX(-280px);
     opacity: 0;
     visibility: hidden;
-
-    transition: transform .3s ease, opacity .25s ease;
     z-index: 999;
+    transition: transform .28s ease, opacity .25s ease;
 }
 
-/* Sidebar visible */
 body.logged-in .sidebar {
-    transform: translateX(0);
     opacity: 1;
     visibility: visible;
+    transform: translateX(0);
 }
 
-/* Sidebar hidden */
 body.logged-in.sidebar-closed .sidebar {
-    transform: translateX(-270px);
     opacity: 0;
     visibility: hidden;
+    transform: translateX(-280px);
 }
 
-/* ============================================================
-   PROFILE AREA
-============================================================ */
+/* ===============================
+   PROFILE STYLING
+=============================== */
 .sb-top {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 18px;
+    margin-bottom: 10px;
 }
 
 .avatar {
-    width: 90px;
-    height: 90px;
+    width: 95px;
+    height: 95px;
     border-radius: 50%;
     object-fit: cover;
-
-    border: 3px solid #2096ff;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    border: 3px solid #1e90ff;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
 }
 
 .profile-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: #fff;
     margin-top: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff !important; /* FIXED */
 }
 
 .profile-id {
+    margin-top: 3px;
     font-size: 13px;
-    color: #c9d5e2;
-    opacity: 0.85;
-    margin-top: 4px;
+    color: #d6dfeb !important; /* FIXED */
 }
 
-/* ============================================================
-   NAVIGATION BUTTONS
-============================================================ */
-.sb-nav,
-.sb-bottom {
-    width: 100%;
-    padding: 5px 20px;
+/* ===============================
+   SIDEBAR BUTTONS
+=============================== */
+.sb-nav, .sb-bottom {
+    padding: 0 15px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -937,120 +933,81 @@ body.logged-in.sidebar-closed .sidebar {
 
 .side-btn {
     width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+
     background: linear-gradient(135deg, #1b9aff, #0a6ad9);
-    padding: 12px 12px;
-    border-radius: 12px;
+    color: #fff !important;
+
     font-size: 14px;
     font-weight: 700;
-    color: #fff;
     border: none;
-    text-align: left;
-
-    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     cursor: pointer;
 
-    transition: transform .13s ease, background .2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform .15s ease;
 }
 
 .side-btn:hover {
     transform: translateY(-2px);
 }
 
-.side-btn:active {
-    transform: translateY(1px);
-}
-
-/* Logout button slight red hint */
-.side-btn.logout {
-    background: linear-gradient(135deg, #ff5d5d, #d63a3a);
-}
-
-
-/* ============================================================
-   MENU BUTTON — FIXED TOP
-============================================================ */
+/* ===============================
+   MENU BUTTON
+=============================== */
 #toggleSidebarBtn {
     position: fixed;
     top: 12px;
-    left: 15px;
+    left: 14px;
 
     width: 150px;
     height: 45px;
     border-radius: 14px;
-    font-weight: 800;
 
     background: linear-gradient(135deg, #1b9aff, #0062d9);
     color: #fff;
 
-    border: none;
+    font-weight: 800;
+
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 
+    border: none;
     cursor: pointer;
     z-index: 3000;
-
-    box-shadow:
-        0 4px 12px rgba(0,0,0,0.25),
-        inset 0 1px 2px rgba(255,255,255,0.25);
-
-    transition: transform .2s ease;
 }
 
-#toggleSidebarBtn:hover {
-    transform: translateY(-3px);
-}
-
-#toggleSidebarBtn:active {
-    transform: translateY(1px);
-}
-
-
-/* ============================================================
-   LIGHT MODE — FULL SUPPORT
-============================================================ */
+/* ======================================
+   ⭐ LIGHT MODE SIDEBAR
+====================================== */
 
 body.light-mode .sidebar {
-    background: #ffffff;
-    border-right: 1px solid #dfe4ea;
+    background: #f4f6fb !important;
+    border-right: 2px solid #dce1eb;
 }
 
-body.light-mode .profile-name {
+body.light-mode .profile-name,
+body.light-mode .profile-id {
+    color: #222 !important; /* FINALLY FIXED */
+}
+
+body.light-mode .side-btn {
+    background: #e8ebf7 !important;
+    border: 1px solid #cfd4e4;
     color: #111 !important;
 }
 
-body.light-mode .profile-id {
-    color: #555 !important;
-}
-
-/* Light mode avatar border */
-body.light-mode .avatar {
-    border-color: #1e7cff;
-}
-
-/* Light mode buttons */
-body.light-mode .side-btn {
-    background: #eaf1ff;
-    color: #111;
-    border: 1px solid #cfd9ef;
-    box-shadow: none;
-}
-
 body.light-mode .side-btn:hover {
-    background: #d9e7ff;
+    background: #dce1f4 !important;
 }
 
-/* Light mode Logout */
-body.light-mode .side-btn.logout {
-    background: #ffdede;
-    color: #7a0000;
-}
-
-/* Light mode Menu Btn */
 body.light-mode #toggleSidebarBtn {
     background: linear-gradient(135deg, #5aaaff, #1f7bdd);
+    color: #fff !important;
 }
+
 
 
 
