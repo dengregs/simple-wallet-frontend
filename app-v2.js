@@ -674,8 +674,8 @@ async function initLedger() {
     const token = localStorage.getItem("jwt");
     const accountId = localStorage.getItem("account_id");   // ⭐ keep this
 
-    // ⭐ FIX: remove the query param but keep your same structure
-    const r = await fetch(`${API_BASE}/wallet/ledger`, {
+    // ⭐ FIX: add account_id back so each user sees THEIR OWN ledger
+    const r = await fetch(`${API_BASE}/wallet/ledger?account_id=${accountId}`, {
       headers: { authorization: `Bearer ${token}` }
     });
 
@@ -710,6 +710,7 @@ async function initLedger() {
     showErrorPopup("Ledger network error");
   }
 }
+
 
 
 
