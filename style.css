@@ -756,6 +756,7 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
    ============================== */
 
 /* SIDEBAR */
+/* SIDEBAR — keep everything the same, only adjust padding */
 .sidebar {
     display: none;
     opacity: 0;
@@ -769,8 +770,8 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
     z-index: 999;
     transform: translateX(0);
 
-    /* ⭐ Add padding to push avatar DOWN */
-    padding-top: 130px;
+    /* ⭐ Slightly reduced so gap looks good */
+    padding-top: 95px;  
 }
 
 /* Sidebar when visible */
@@ -788,18 +789,15 @@ body.logged-in.sidebar-closed .sidebar {
     visibility: hidden;
 }
 
-
-/* ================================
-   ⭐ MENU BUTTON FIX (MODIFIED)
-   ================================ */
-
-/* Default Menu Button */
+/* ============================
+   MENU BUTTON POSITION FIX
+   ============================ */
 #toggleSidebarBtn {
     position: fixed;
 
-    /* ⭐ Move it ABOVE the avatar */
-    top: -5px;         /* <— raised the button so it sits ABOVE the sidebar */
-    left: 10px;        /* <— slightly inward but not covering profile pic */
+    /* ⭐ Closer to top, but NOT overlapping avatar */
+    top: 10px;
+    left: 18px;
 
     z-index: 3000;
 
@@ -828,8 +826,8 @@ body.logged-in.sidebar-closed .sidebar {
 
 /* Keep visible when sidebar is closed */
 body.logged-in.sidebar-closed #toggleSidebarBtn {
-    top: -5px;  /* ⭐ same top value here */
-    left: 10px;
+    top: 10px;
+    left: 18px;
     z-index: 3000;
 }
 
@@ -849,6 +847,7 @@ body.logged-in.sidebar-closed #toggleSidebarBtn {
         0 3px 8px rgba(0, 0, 0, 0.35),
         inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
+
 
 
 
