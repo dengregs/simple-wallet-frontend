@@ -1070,7 +1070,14 @@ body.light-mode #toggleSidebarBtn {
     color: #fff !important;
 }
 
+.quick-actions .qa.logout {
+    background: #ff4d4d;
+    color: #fff;
+}
 
+.quick-actions .qa.logout:hover {
+    background: #e63b3b;
+}
 
 
 
