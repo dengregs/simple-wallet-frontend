@@ -884,10 +884,11 @@ body.logged-in .sidebar {
 }
 
 body.logged-in.sidebar-closed .sidebar {
+    transform: translateX(-100%);
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-280px);
 }
+
 
 /* ===============================
    PROFILE STYLING
