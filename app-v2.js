@@ -672,9 +672,9 @@ async function initLedger() {
 
   try {
     const token = localStorage.getItem("jwt");
-    const accountId = localStorage.getItem("account_id");   // ⭐ keep this
+    const accountId = localStorage.getItem("account_id"); // ⭐ Needed
 
-    // ⭐ FIX: add account_id back so each user sees THEIR OWN ledger
+    // ⭐ FIX: Now fetching only THIS user's ledger
     const r = await fetch(`${API_BASE}/wallet/ledger?account_id=${accountId}`, {
       headers: { authorization: `Bearer ${token}` }
     });
@@ -710,6 +710,7 @@ async function initLedger() {
     showErrorPopup("Ledger network error");
   }
 }
+
 
 
 
