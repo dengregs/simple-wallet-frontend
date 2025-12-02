@@ -752,8 +752,22 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
 =============================== */
 /* Make sidebar lower so Menu button doesn't overlap profile */
 .sidebar {
-    padding-top: 70px; /* ⭐ pushes your profile down */
+    padding-top: 90px; /* ⭐ Push sidebar content BELOW Menu button */
+
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .2s ease, transform .25s ease;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 260px;          /* ⭐ Recommended so transform -260px matches sidebar width */
+    z-index: 999;
+    transform: translateX(0);
 }
+
 
 /* Global Menu Button Position */
 #toggleSidebarBtn {
