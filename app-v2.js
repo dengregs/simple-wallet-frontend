@@ -120,13 +120,7 @@ function navTo(id) {
   if (id === "profileScreen") {
     loadProfile();
   }
-
-  // ⭐⭐ ADD THIS (ONLY MODIFICATION YOU NEED)
-  if (id === "historySection") {
-    initLedger();    // 🔥 Refresh ledger for the currently logged-in user
-  }
 }
-
 
 
 
@@ -917,22 +911,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// ⭐ Restore sidebar state after page reload
-document.addEventListener("DOMContentLoaded", () => {
-    const token = localStorage.getItem("jwt");
-
-    // If user was logged in before reload → restore sidebar + menu button
-    if (token) {
-        document.body.classList.add("logged-in");
-        document.body.classList.remove("sidebar-closed");
-    }
-
-    // Ensure the menu button works
-    const btn = document.getElementById("toggleSidebarBtn");
-    if (btn) {
-        btn.addEventListener("click", () => {
-            document.body.classList.toggle("sidebar-closed");
-        });
-    }
-});
 
