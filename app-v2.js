@@ -120,7 +120,13 @@ function navTo(id) {
   if (id === "profileScreen") {
     loadProfile();
   }
+
+  // ⭐⭐ ADD THIS (ONLY MODIFICATION YOU NEED)
+  if (id === "historySection") {
+    initLedger();    // 🔥 Refresh ledger for the currently logged-in user
+  }
 }
+
 
 
 
