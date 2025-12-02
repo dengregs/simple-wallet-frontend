@@ -1070,6 +1070,22 @@ body.light-mode #toggleSidebarBtn {
     color: #fff !important;
 }
 
+/* --- MOBILE SIDEBAR FIX --- */
+@media (max-width: 600px) {
+
+    .sidebar {
+        width: 80vw !important;        /* full mobile-friendly width */
+        transform: translateX(-100%) !important;
+    }
+
+    body.logged-in .sidebar {
+        transform: translateX(0) !important;
+    }
+
+    body.logged-in.sidebar-closed .sidebar {
+        transform: translateX(-100%) !important;
+    }
+}
 
 
 

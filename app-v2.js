@@ -1,5 +1,10 @@
 
-
+document.addEventListener("DOMContentLoaded", () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+        showPage("loginPage");
+    }
+});
 
 window.addEventListener("unhandledrejection", (e) => {
   const msg = (e.reason?.message || "") + (e.reason?.stack || "");
