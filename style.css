@@ -1079,6 +1079,18 @@ body.light-mode #toggleSidebarBtn {
     background: #e63b3b;
 }
 
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 3000;
+}
+
+/* Button position when sidebar is closed */
+body.logged-in.sidebar-closed .menu-btn {
+    top: 18px;
+    left: 18px;
+}
 
 
 
