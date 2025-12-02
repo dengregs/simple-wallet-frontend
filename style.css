@@ -750,52 +750,20 @@ body.dark .input-with-prefix .prefix{ background:rgba(255,255,255,0.03); color:#
 /* ============================
    YOUR ORIGINAL CODE (unchanged)
 =============================== */
+/* Make sidebar lower so Menu button doesn't overlap profile */
 .sidebar {
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .2s ease, transform .25s ease;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    z-index: 999;
-    transform: translateX(0);
+    padding-top: 70px; /* ⭐ pushes your profile down */
 }
 
-body.logged-in .sidebar {
-    display: flex;
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-}
-
-/* Sidebar CLOSED */
-body.logged-in.sidebar-closed .sidebar {
-    transform: translateX(-260px);
-    opacity: 0;
-    visibility: hidden;
-}
-
-/* ⭐ Keep Menu button clickable when sidebar is hidden */
-body.logged-in.sidebar-closed #toggleSidebarBtn {
-    left: 20px;
-    top: 20px;
-}
-
-/* =========================================================
-   ⭐ IMPROVED MENU BUTTON DESIGN — modified only
-   ========================================================= */
+/* Global Menu Button Position */
 #toggleSidebarBtn {
-    position: fixed;   /* always visible */
-    top: 20px;
-    left: 20px;
-    z-index: 2000;
+    position: fixed;
+    top: 18px;
+    left: 18px;
+    z-index: 3000;   /* ⭐ ensures it's always above sidebar */
 
     width: 150px;
-    height: 46px;
-
+    height: 45px;
     border-radius: 14px;
     font-weight: 800;
     padding: 10px 14px;
@@ -817,6 +785,14 @@ body.logged-in.sidebar-closed #toggleSidebarBtn {
     transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
+/* Keep it visible when sidebar is closed */
+body.logged-in.sidebar-closed #toggleSidebarBtn {
+    left: 18px;
+    top: 18px;
+    z-index: 3000; /* ⭐ stays clickable */
+}
+
+/* Hover */
 #toggleSidebarBtn:hover {
     transform: translateY(-3px);
     background: linear-gradient(135deg, #3fb4ff, #1170e6);
@@ -825,12 +801,14 @@ body.logged-in.sidebar-closed #toggleSidebarBtn {
         inset 0 1px 2px rgba(255, 255, 255, 0.25);
 }
 
+/* Active press */
 #toggleSidebarBtn:active {
     transform: translateY(1px);
     box-shadow:
         0 3px 8px rgba(0, 0, 0, 0.35),
         inset 0 1px 3px rgba(0, 0, 0, 0.3);
 }
+
 
 
 
