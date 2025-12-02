@@ -778,36 +778,57 @@ body.logged-in.sidebar-closed .sidebar {
     visibility: hidden;
 }
 
-/* ⭐ Keep menu button tappable when sidebar is closed */
+/* ⭐ Keep Menu button tappable even when sidebar is hidden */
 body.logged-in.sidebar-closed #toggleSidebarBtn {
     position: fixed;
-    top: 20px;
-    left: 20px;
+    top: 18px;
+    left: 18px;
     z-index: 2000;
 }
 
-/* Toggle button style */
+/* ============================================
+   ⭐ **Improved Menu Button Design**
+   ============================================ */
 #toggleSidebarBtn {
-    width: 120px;
-    border-radius: 12px;
+    width: 150px;
+    height: 45px;
+    border-radius: 14px;
     font-weight: 800;
     padding: 10px 14px;
-    background: linear-gradient(135deg, #0b7bff, #0563c8);
+
+    background: linear-gradient(135deg, #1b9aff, #0062d9);
     color: #fff;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    cursor: pointer;
-    transition: 0.2s ease;
     border: none;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 10px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 1px 2px rgba(255, 255, 255, 0.2);
+
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
 }
 
 #toggleSidebarBtn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 26px rgba(0,0,0,0.22);
+    background: linear-gradient(135deg, #3fb4ff, #1170e6);
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.35),
+        inset 0 1px 2px rgba(255, 255, 255, 0.25);
 }
+
+/* Click / Press effect */
+#toggleSidebarBtn:active {
+    transform: translateY(1px);
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.35),
+        inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
 
 
 
