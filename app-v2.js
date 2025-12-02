@@ -120,7 +120,13 @@ function navTo(id) {
   if (id === "profileScreen") {
     loadProfile();
   }
+
+  // ⭐ NEW FIX → Always load correct ledger when entering history
+  if (id === "historySection") {
+    initLedger();
+  }
 }
+
 
 
 
