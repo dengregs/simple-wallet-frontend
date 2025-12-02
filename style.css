@@ -1008,6 +1008,66 @@ body.light-mode #toggleSidebarBtn {
     color: #fff !important;
 }
 
+/* ============================================================
+   FIXED SIDEBAR + FULL LIGHT-MODE SUPPORT
+   ============================================================ */
+
+/* --- Base (Dark Mode Default) --- */
+.sidebar {
+    background: linear-gradient(180deg, #071a2f, #0b243a);
+    border-right: 2px solid rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+}
+
+.sidebar .profile-name,
+.sidebar .profile-id {
+    color: #ffffff !important;
+}
+
+/* Navigation buttons (dark mode) */
+.sidebar .side-btn {
+    background: linear-gradient(135deg, #1b9aff, #0a6ad9);
+    color: #ffffff !important;
+    border: none;
+}
+
+/* ============================================================
+   ⭐ LIGHT MODE OVERRIDES
+   These MUST be placed last to override dark-mode styles
+   ============================================================ */
+
+body.light-mode .sidebar {
+    background: #f7f9fc;          /* Light background */
+    border-right: 2px solid #dfe3ee;
+    color: #111 !important;
+}
+
+/* Profile text in light mode */
+body.light-mode .sidebar .profile-name,
+body.light-mode .sidebar .profile-id {
+    color: #222 !important;       /* Fixes blue color */
+}
+
+/* Sidebar buttons in light mode */
+body.light-mode .sidebar .side-btn {
+    background: #e5e9ff;
+    border: 1px solid #ccd3f0;
+    color: #111 !important;
+}
+
+body.light-mode .sidebar .side-btn:hover {
+    background: #d6dbff;
+}
+
+body.light-mode .sidebar .side-btn:active {
+    background: #cdd2ff;
+}
+
+/* Light mode Menu Button */
+body.light-mode #toggleSidebarBtn {
+    background: linear-gradient(135deg, #5aaaff, #1f7bdd);
+    color: #fff !important;
+}
 
 
 
